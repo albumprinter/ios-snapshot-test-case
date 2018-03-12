@@ -144,7 +144,7 @@
                                        error:errorPtr];
 }
 
-- (BOOL)compareSnapshotOfView:(UIView *)view
+- (BOOL)compareSnapshotOfView:(FBTCView *)view
      referenceImagesDirectory:(NSString *)referenceImagesDirectory
                    identifier:(NSString *)identifier
                     tolerance:(CGFloat)tolerance
@@ -163,7 +163,7 @@
 {
     NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
     _snapshotController.referenceImagesDirectory = referenceImagesDirectory;
-    UIImage *referenceImage = [_snapshotController referenceImageForSelector:self.invocation.selector
+    FBTCImage *referenceImage = [_snapshotController referenceImageForSelector:self.invocation.selector
                                                                   identifier:identifier
                                                                        error:errorPtr];
 

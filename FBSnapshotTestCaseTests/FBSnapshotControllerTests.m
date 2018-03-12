@@ -20,9 +20,9 @@
 
 - (void)testCompareReferenceImageToImageShouldBeEqual
 {
-    UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+    FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
     XCTAssertNotNil(referenceImage);
-    UIImage *testImage = [self _bundledImageNamed:@"square-copy" type:@"png"];
+    FBTCImage *testImage = [self _bundledImageNamed:@"square-copy" type:@"png"];
     XCTAssertNotNil(testImage);
 
     FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -33,9 +33,9 @@
 
 - (void)testCompareReferenceImageToImageShouldNotBeEqual
 {
-    UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+    FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
     XCTAssertNotNil(referenceImage);
-    UIImage *testImage = [self _bundledImageNamed:@"square_with_text" type:@"png"];
+    FBTCImage *testImage = [self _bundledImageNamed:@"square_with_text" type:@"png"];
     XCTAssertNotNil(testImage);
 
     FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -47,9 +47,9 @@
 
 - (void)testCompareReferenceImageWithVeryLowToleranceShouldNotMatch
 {
-    UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+    FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
     XCTAssertNotNil(referenceImage);
-    UIImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
+    FBTCImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
     XCTAssertNotNil(testImage);
 
     FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -62,9 +62,9 @@
 
 - (void)testCompareReferenceImageWithVeryLowToleranceShouldMatch
 {
-    UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+    FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
     XCTAssertNotNil(referenceImage);
-    UIImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
+    FBTCImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
     XCTAssertNotNil(testImage);
 
     FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -76,9 +76,9 @@
 
 - (void)testCompareReferenceImageWithDifferentSizes
 {
-  UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+  FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
   XCTAssertNotNil(referenceImage);
-  UIImage *testImage = [self _bundledImageNamed:@"rect" type:@"png"];
+  FBTCImage *testImage = [self _bundledImageNamed:@"rect" type:@"png"];
   XCTAssertNotNil(testImage);
   
   FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -91,9 +91,9 @@
 
 - (void)testFailedImageWithDeviceAgnosticShouldHaveModelOnName
 {
-  UIImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
+  FBTCImage *referenceImage = [self _bundledImageNamed:@"square" type:@"png"];
   XCTAssertNotNil(referenceImage);
-  UIImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
+  FBTCImage *testImage = [self _bundledImageNamed:@"square_with_pixel" type:@"png"];
   XCTAssertNotNil(testImage);
   
   FBSnapshotTestController *controller = [[FBSnapshotTestController alloc] initWithTestClass:nil];
@@ -109,12 +109,12 @@
 
 #pragma mark - Private helper methods
 
-- (UIImage *)_bundledImageNamed:(NSString *)name type:(NSString *)type
+- (FBTCImage *)_bundledImageNamed:(NSString *)name type:(NSString *)type
 {
   NSBundle *bundle = [NSBundle bundleForClass:[self class]];
   NSString *path = [bundle pathForResource:name ofType:type];
   NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-  return [[UIImage alloc] initWithData:data];
+  return [[FBTCImage alloc] initWithData:data];
 }
 
 @end

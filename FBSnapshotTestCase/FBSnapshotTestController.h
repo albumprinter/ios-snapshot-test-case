@@ -7,7 +7,11 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#if TARGET_OS_OSX
+  #import <AppKit/AppKit.h>
+#else
+  #import <UIKit/UIKit.h>
+#endif
 
 #import <FBSnapshotTestCase/FBSnapshotTestCasePlatform.h>
 
@@ -117,7 +121,7 @@ extern NSString *const FBDiffedImageKey;
  @param errorPtr An error to log in an XCTAssert() macro if the method fails (missing reference image, images differ, etc).
  @returns YES if the comparison (or saving of the reference image) succeeded.
  */
-- (BOOL)compareSnapshotOfView:(UIView *)view
+- (BOOL)compareSnapshotOfView:(FBTCView *)view
                      selector:(SEL)selector
                    identifier:(NSString *)identifier
                         error:(NSError **)errorPtr;
@@ -144,7 +148,7 @@ extern NSString *const FBDiffedImageKey;
  @param errorPtr An error, if this methods returns nil, the error will be something useful.
  @returns An image.
  */
-- (UIImage *)referenceImageForSelector:(SEL)selector
+- (FBTCImage *)referenceImageForSelector:(SEL)selector
                             identifier:(NSString *)identifier
                                  error:(NSError **)errorPtr;
 
@@ -156,8 +160,8 @@ extern NSString *const FBDiffedImageKey;
  @param errorPtr An error that indicates why the comparison failed if it does.
  @returns YES if the comparison succeeded and the images are the same(ish).
  */
-- (BOOL)compareReferenceImage:(UIImage *)referenceImage
-                      toImage:(UIImage *)image
+- (BOOL)compareReferenceImage:(FBTCImage *)referenceImage
+                      toImage:(FBTCImage *)image
                     tolerance:(CGFloat)tolerance
                         error:(NSError **)errorPtr;
 
@@ -170,9 +174,10 @@ extern NSString *const FBDiffedImageKey;
  @param errorPtr An error that indicates why the comparison failed if it does.
  @returns YES if the save succeeded.
  */
-- (BOOL)saveFailedReferenceImage:(UIImage *)referenceImage
-                       testImage:(UIImage *)testImage
+- (BOOL)saveFailedReferenceImage:(FBTCImage *)referenceImage
+                       testImage:(FBTCImage *)testImage
                         selector:(SEL)selector
                       identifier:(NSString *)identifier
                            error:(NSError **)errorPtr;
+
 @end
