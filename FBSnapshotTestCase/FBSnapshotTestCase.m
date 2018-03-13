@@ -20,6 +20,10 @@
 {
   [super setUp];
   _snapshotController = [[FBSnapshotTestController alloc] initWithTestName:NSStringFromClass([self class])];
+#if TARGET_OS_OSX
+  // On OSX, only the drawing view hierarchy mode is supported; `[view.layer drawInContext:]` does not render the sublayer. TODO: Investigate this!
+  self.usesDrawViewHierarchyInRect = true;
+#endif
 }
 
 - (void)tearDown
@@ -69,6 +73,9 @@
 - (void)setUsesDrawViewHierarchyInRect:(BOOL)usesDrawViewHierarchyInRect
 {
   NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+#if TARGET_OS_OSX
+  NSAssert(usesDrawViewHierarchyInRect == YES, @"On OSX, only the `usesDrawViewHierarchyInRect == YES` mode is supported at the moment.");
+#endif
   _snapshotController.usesDrawViewHierarchyInRect = usesDrawViewHierarchyInRect;
 }
 
