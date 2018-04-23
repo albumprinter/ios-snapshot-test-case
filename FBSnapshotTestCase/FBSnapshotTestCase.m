@@ -20,6 +20,10 @@
 {
   [super setUp];
   _snapshotController = [[FBSnapshotTestController alloc] initWithTestName:NSStringFromClass([self class])];
+#if TARGET_OS_OSX
+  // On OSX, only the drawing view hierarchy mode is supported; `[view.layer drawInContext:]` does not render the sublayer. TODO: Investigate this!
+  self.usesDrawViewHierarchyInRect = true;
+#endif
 }
 
 - (void)tearDown
@@ -69,6 +73,9 @@
 - (void)setUsesDrawViewHierarchyInRect:(BOOL)usesDrawViewHierarchyInRect
 {
   NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+#if TARGET_OS_OSX
+  NSAssert(usesDrawViewHierarchyInRect == YES, @"On OSX, only the `usesDrawViewHierarchyInRect == YES` mode is supported at the moment.");
+#endif
   _snapshotController.usesDrawViewHierarchyInRect = usesDrawViewHierarchyInRect;
 }
 
@@ -144,7 +151,7 @@
                                        error:errorPtr];
 }
 
-- (BOOL)compareSnapshotOfView:(UIView *)view
+- (BOOL)compareSnapshotOfView:(FBTCView *)view
      referenceImagesDirectory:(NSString *)referenceImagesDirectory
                    identifier:(NSString *)identifier
                     tolerance:(CGFloat)tolerance
@@ -163,7 +170,7 @@
 {
     NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
     _snapshotController.referenceImagesDirectory = referenceImagesDirectory;
-    UIImage *referenceImage = [_snapshotController referenceImageForSelector:self.invocation.selector
+    FBTCImage *referenceImage = [_snapshotController referenceImageForSelector:self.invocation.selector
                                                                   identifier:identifier
                                                                        error:errorPtr];
 

@@ -7,8 +7,13 @@
  */
 
 #import <FBSnapshotTestCase/FBSnapshotTestCasePlatform.h>
-#import <FBSnapshotTestCase/UIApplication+StrictKeyWindow.h>
-#import <UIKit/UIKit.h>
+#if TARGET_OS_OSX
+  #import <FBSnapshotTestCase/NSApplication+StrictKeyWindow.h>
+  #import <AppKit/AppKit.h>
+#else
+  #import <FBSnapshotTestCase/UIApplication+StrictKeyWindow.h>
+  #import <UIKit/UIKit.h>
+#endif
 
 BOOL FBSnapshotTestCaseIs64Bit(void)
 {
@@ -32,6 +37,9 @@ NSOrderedSet *FBSnapshotTestCaseDefaultSuffixes(void)
 
 NSString *FBDeviceAgnosticNormalizedFileName(NSString *fileName)
 {
+#if TARGET_OS_OSX
+  return fileName;
+#else
   UIDevice *device = [UIDevice currentDevice];
   UIWindow *keyWindow = [[UIApplication sharedApplication] fb_strictKeyWindow];
   CGSize screenSize = keyWindow.bounds.size;
@@ -46,10 +54,14 @@ NSString *FBDeviceAgnosticNormalizedFileName(NSString *fileName)
   fileName = [validComponents componentsJoinedByString:@"_"];
   
   return fileName;
+#endif
 }
 
 NSString *FBDeviceAgnosticNormalizedFileNameFromOption(NSString *fileName, FBSnapshotTestCaseAgnosticOption option)
 {
+#if TARGET_OS_OSX
+  return fileName;
+#else
   if ((option & FBSnapshotTestCaseAgnosticOptionDevice) == FBSnapshotTestCaseAgnosticOptionDevice) {
     UIDevice *device = [UIDevice currentDevice];
     fileName = [fileName stringByAppendingFormat:@"_%@", device.model];
@@ -74,4 +86,5 @@ NSString *FBDeviceAgnosticNormalizedFileNameFromOption(NSString *fileName, FBSna
   fileName = [validComponents componentsJoinedByString:@"_"];
 
   return fileName;
+#endif
 }

@@ -1,8 +1,15 @@
-iOSSnapshotTestCase (previously named FBSnapshotTestCase)
+SnapshotTestCase (previously named iOSSnapshotTestCase, previously FBSnapshotTestCase)
 ======================
 
-[![Build Status](https://travis-ci.org/uber/ios-snapshot-test-case.svg)](https://travis-ci.org/uber/ios-snapshot-test-case) 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/iOSSnapshotTestCase.svg)](https://img.shields.io/cocoapods/v/iOSSnapshotTestCase.svg)
+[![Build Status](https://api.travis-ci.org/albumprinter/snapshot-test-case.svg)](https://travis-ci.org/albumprinter/snapshot-test-case)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SnapshotTestCase.svg)](https://img.shields.io/cocoapods/v/SnapshotTestCase.svg)
+
+Mac OS Port
+-----------
+
+This is a fork of [uber/ios-snapshot-test-case](https://github.com/uber/ios-snapshot-test-case.git) repository, which adds MacOS target support.
+The library has been renamed to `SnapshotTestCase` to reflect that it is not iOS-only.
+MacOS deployment target is 10.10.
 
 What it does
 ------------
@@ -95,6 +102,7 @@ Authors
 [Todd Krabach](https://facebook.com/toddkrabach).
 
 Today it is maintained by [Uber](https://github.com/uber) and [Alan Zeino](https://github.com/alanzeino).
+`SnapshotTestCase` fork is maintained by [Ivan Misuno](https://github.com/ivanmisuno-albelli).
 
 License
 -------
