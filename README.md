@@ -7,8 +7,10 @@ SnapshotTestCase (previously named iOSSnapshotTestCase, previously FBSnapshotTes
 Mac OS Port
 -----------
 
-This is a fork of [uber/ios-snapshot-test-case](https://github.com/uber/ios-snapshot-test-case.git) repository, which adds MacOS target support.
-The library has been renamed to `SnapshotTestCase` to reflect that it is not iOS-only.
+This is a fork of [uber/ios-snapshot-test-case](https://github.com/uber/ios-snapshot-test-case.git) repository, which adds MacOS target support. 
+
+The library has been renamed to `SnapshotTestCase` to reflect that it is not iOS-only. 
+
 MacOS deployment target is 10.10.
 
 What it does
@@ -101,7 +103,8 @@ Authors
 [Jonathan Dann](https://facebook.com/j.p.dann) with significant contributions by
 [Todd Krabach](https://facebook.com/toddkrabach).
 
-Today it is maintained by [Uber](https://github.com/uber) and [Alan Zeino](https://github.com/alanzeino).
+Today it is maintained by [Uber](https://github.com/uber) and [Alan Zeino](https://github.com/alanzeino). 
+
 `SnapshotTestCase` fork is maintained by [Ivan Misuno](https://github.com/ivanmisuno-albelli).
 
 License
