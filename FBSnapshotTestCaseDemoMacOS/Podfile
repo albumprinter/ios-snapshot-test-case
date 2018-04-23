@@ -9,6 +9,6 @@ target 'FBSnapshotTestCaseDemoMacOS' do
 
 	target 'FBSnapshotTestCaseDemoMacOSTests' do
 		inherit! :search_paths
-		pod 'iOSSnapshotTestCase', :path => '..'
+		pod 'SnapshotTestCase', :path => '..'
 	end
 end
