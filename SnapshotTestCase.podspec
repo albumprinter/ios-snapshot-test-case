@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/albumprinter/snapshot-test-case"
   s.license      = 'MIT'
   s.author       = 'Albelli'
-  s.source       = { :git => "https://github.com/albumprinter/snapshot-test-case",
+  s.source       = { :git => "https://github.com/albumprinter/snapshot-test-case.git",
                      :tag => s.version.to_s }
   s.ios.deployment_target  = '8.1'
   s.tvos.deployment_target = '9.0'
