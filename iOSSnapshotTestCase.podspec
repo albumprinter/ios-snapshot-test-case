@@ -1,19 +1,19 @@
 Pod::Spec.new do |s|
-  s.name         = "iOSSnapshotTestCase"
+  s.name         = "SnapshotTestCase"
   s.module_name  = "FBSnapshotTestCase"
   s.version      = "3.0.0"
-  s.summary      = "Snapshot view unit tests for iOS"
+  s.summary      = "Snapshot view unit tests for iOS/MacOS"
   s.description  = <<-DESC
-                    A "snapshot test case" takes a configured UIView or CALayer
+                    A "snapshot test case" takes a configured UIView/NSView or CALayer
                     and uses the renderInContext: method to get an image snapshot
                     of its contents. It compares this snapshot to a "reference image"
                     stored in your source code repository and fails the test if the
                     two images don't match.
                    DESC
-  s.homepage     = "https://github.com/uber/ios-snapshot-test-case"
+  s.homepage     = "https://github.com/albumprinter/snapshot-test-case"
   s.license      = 'MIT'
-  s.author       = 'Uber'
-  s.source       = { :git => "https://github.com/uber/ios-snapshot-test-case.git",
+  s.author       = 'Albelli'
+  s.source       = { :git => "https://github.com/albumprinter/snapshot-test-case",
                      :tag => s.version.to_s }
   s.ios.deployment_target  = '8.1'
   s.tvos.deployment_target = '9.0'
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
     cs.osx.exclude_files = 'FBSnapshotTestCase/Categories/*.{h,m}'
   end
   s.subspec 'SwiftSupport' do |cs|
-    cs.dependency 'iOSSnapshotTestCase/Core'
+    cs.dependency 'SnapshotTestCase/Core'
     cs.source_files = 'FBSnapshotTestCase/**/*.swift'
   end
 end
