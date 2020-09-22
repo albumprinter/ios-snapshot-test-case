@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "SnapshotTestCase"
   s.module_name  = "FBSnapshotTestCase"
-  s.version      = "3.0.0"
+  s.version      = "3.0.1"
   s.summary      = "Snapshot view unit tests for iOS/MacOS"
   s.description  = <<-DESC
                     A "snapshot test case" takes a configured UIView/NSView or CALayer
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
                      :tag => s.version.to_s }
   s.ios.deployment_target  = '8.1'
   s.tvos.deployment_target = '9.0'
-  s.osx.deployment_target = '10.10'
+  s.osx.deployment_target = '10.11'
   s.requires_arc = true
   s.ios.frameworks   = 'XCTest','UIKit','Foundation','QuartzCore'
   s.tvos.frameworks   = 'XCTest','UIKit','Foundation','QuartzCore'
