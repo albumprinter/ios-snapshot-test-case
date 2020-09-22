@@ -11,7 +11,7 @@ This is a fork of [uber/ios-snapshot-test-case](https://github.com/uber/ios-snap
 
 The library has been renamed to `SnapshotTestCase` to reflect that it is not iOS-only. 
 
-MacOS deployment target is 10.10.
+MacOS deployment target is 10.11.
 
 What it does
 ------------
